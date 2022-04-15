@@ -12,7 +12,7 @@
     position: absolute;
     top: 40px;
     left: 50%;
-    margin-left: -350px;
+    margin-left: -320px;
 }
 
 .menu1 a {
@@ -75,4 +75,106 @@
     background-position: 0px -250px;
     color: white;
     padding: 20px;
+}
+
+#menuToggle {
+    display: none;
+}
+
+.menu-icon {
+    display: none;
+}
+
+/* Media Queries */
+
+@media screen and (max-width: 600px) {
+    .header {
+        background-position: 0px -50px;
+    }
+}
+
+@media screen and (min-width: 601px) and (max-width:980px) {
+    .header {
+        background-position: 0px - 100px;
+    }
+}
+
+@media screen and (max-width: 1000px) {
+    .header {
+        position: fixed;
+        top: 0px;
+        z-index: 999;
+        max-width: 100% !important;
+    }
+
+    .container_nav {
+        display: absolute;
+        width: 100%;
+        height: 100%;
+    }
+
+    .main {
+        margin-top: 140px;
+    }
+
+    .menu1 {
+        display: flex;
+        position: fixed;
+        flex-wrap: wrap;
+        align-content: center;
+        top: 0px;
+        left: 320px;
+        width: 100%;
+        height: 0%;
+        background-color: rgba(0, 0, 0, 0.7);
+        overflow: hidden;
+        -webkit-transition: height 0.3s;
+        -moz-transition: height 0.3s;
+        -o-transition: height 0.3s;
+        transition: height 0.3s;
+
+    }
+
+    .menu1 a {
+        display: block;
+        text-align: center;
+        width: 100%;
+        margin-bottom: 20px;
+    }
+
+    .menu-icon {
+        width: 50px;
+        height: inherit;
+        display: block;
+        position: absolute;
+        top: 55px;
+        right: 30px;
+        line-height: 60px;
+        color: white;
+        z-index: 999;
+    }
+
+    #menuToggle:checker~label i:nth-child(2) {
+        display: block;
+    }
+
+    #menuToggle:checked~label i:first-child {
+        display: none;
+    }
+
+    #menuToggle:not(:checked)~label i:first-child {
+        display: block;
+    }
+
+    #menuToggle:not(:checked)~label i:nth-child(2) {
+        display: none;
+    }
+
+    #menuToggle:checked~nav {
+        height: 100%;
+    }
+
+    .menu-icon i {
+        font-size: 1.7em;
+    }
 }
