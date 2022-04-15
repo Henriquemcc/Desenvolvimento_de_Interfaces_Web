@@ -1,9 +1,3 @@
-.cor1 {
-    background: red;
-    min-height: 200px;
-}
-
-.cor2 {
-    background: green;
-    min-height: 200px;
+.logo {
+    max-width: 200px;
 }
