@@ -1,0 +1,19 @@
+.header {
+    background: red;
+}
+
+.header_area {
+    padding: 20px;
+}
+
+.logo {
+    width: 150px;
+}
+
+.main {
+    background: blue;
+}
+
+.footer {
+    background: green;
+}
