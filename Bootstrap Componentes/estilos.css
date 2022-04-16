@@ -29,12 +29,16 @@
     width: 150px;
 }
 
-.main {
-    background: blue;
+.main .card {
+    margin-bottom: 15px;
+}
+
+.main_area {
+    margin-bottom: 20px;
 }
 
 .footer {
-    margin-top: 20px;
+    margin-top: 10px;
     background: rgb(110, 62, 138);
     color: white;
 }
