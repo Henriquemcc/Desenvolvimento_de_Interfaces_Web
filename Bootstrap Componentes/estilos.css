@@ -1,9 +1,28 @@
 .header {
-    background: red;
+    background: rgb(110, 62, 138);
+    margin-bottom: 20px;
+    text-align: center;
 }
 
 .header_area {
     padding: 20px;
+}
+
+.menu_area {
+    margin-top: 30px;
+}
+
+.menu_area nav a {
+    background: #5f3d75;
+    color: white;
+}
+
+.menu_area nav a:hover {
+    background: #764c92;
+}
+
+.active {
+    background-color: #402253 !important;
 }
 
 .logo {
@@ -15,5 +34,12 @@
 }
 
 .footer {
-    background: green;
+    margin-top: 20px;
+    background: rgb(110, 62, 138);
+    color: white;
+}
+
+.footer_area {
+    padding: 20px;
+    text-align: center;
 }
