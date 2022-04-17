@@ -12,13 +12,16 @@
     margin-top: 30px;
 }
 
-.menu_area nav a {
+.menu_area nav a:not(:hover) {
     background: #5f3d75;
     color: white;
+    margin-bottom: 10px;
 }
 
 .menu_area nav a:hover {
     background: #764c92;
+    color: white;
+    margin-bottom: 10px;
 }
 
 .active {
@@ -46,4 +49,24 @@
 .footer_area {
     padding: 20px;
     text-align: center;
+}
+
+.modal-body img {
+    width: 100%;
+}
+
+.menu_area2 {
+    margin-top: 30px;
+}
+
+.menu_area2 nav a:not(:hover) {
+    background-color: #eea010;
+    color: white;
+    margin-bottom: 10px;
+}
+
+.menu_area2 nav a:hover {
+    background: #eeb868;
+    color: white;
+    margin-bottom: 10px;
 }
