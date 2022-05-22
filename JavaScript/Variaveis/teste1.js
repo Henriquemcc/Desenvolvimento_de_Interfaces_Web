@@ -74,7 +74,9 @@ console.log("Testando redefinição do valor de uma constante");
 
   try {
     PI = 4;
-  } catch {}
+  } catch (e) {
+    console.log(e);
+  }
   console.log(PI);
 }
 console.log();
