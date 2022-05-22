@@ -72,7 +72,9 @@ console.log("Testando redefinição do valor de uma constante");
   const PI = 3.14159;
   console.log(PI);
 
-  PI = 4;
+  try {
+    PI = 4;
+  } catch {}
   console.log(PI);
 }
 console.log();
