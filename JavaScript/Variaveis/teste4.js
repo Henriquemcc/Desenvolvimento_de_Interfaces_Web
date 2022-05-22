@@ -1,4 +1,5 @@
-// Testando operadores
+// Testando operadores.
+console.log("Testando operadores.");
 {
   let a = "5";
   let b = 5;
@@ -15,16 +16,20 @@
   console.log(9, a == b);
   console.log(10, a === b);
 }
+console.log();
 
-// Testando operadores com strings
+// Testando operadores com strings.
+console.log("Testando operadores com strings.");
 {
   console.log(11, "Z" > "A");
   console.log(12, "Z" > "a");
   console.log(13, "Pato" > "Pata");
   console.log(14, "Dezena" > "Dez");
 }
+console.log();
 
-// Testando comparação com valores null e undefined
+// Testando comparação com valores null e undefined.
+console.log("Testando comparação com valores null e undefined.");
 {
   let x;
 
@@ -36,8 +41,10 @@
   console.log(17, x === undefined);
   console.log(18, x === null);
 }
+console.log();
 
-// Testando operador lógico AND
+// Testando operador lógico AND.
+console.log("Testando operador lógico AND.");
 {
   let a = "5";
   let b = 5;
@@ -48,8 +55,10 @@
   console.log(21, a == b && b < c); // v && f => f
   console.log(22, a === b && b < c); // f && f => f
 }
+console.log();
 
-// Testando operador lógico OR
+// Testando operador lógico OR.
+console.log("Testando operador lógico OR.");
 {
   let a = "5";
   let b = 5;
@@ -60,10 +69,13 @@
   console.log(25, a == b || b < c); // v || f => v
   console.log(26, a === b || b < c); // f || f => f
 }
+console.log();
 
-// Testando operador lógico NOT
+// Testando operador lógico NOT.
+console.log("Testando operador lógico NOT.");
 {
-    let b = 5;
-    let c = 2;
-    console.log(27, !(b > c)); // !v => f, !f => v
+  let b = 5;
+  let c = 2;
+  console.log(27, !(b > c)); // !v => f, !f => v
 }
+console.log();
