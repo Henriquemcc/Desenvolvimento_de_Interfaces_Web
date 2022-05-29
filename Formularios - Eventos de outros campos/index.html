@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Pedidos de Salada</title>
+    <script src="script.js"></script>
+</head>
+
+<body>
+    <p>
+        <label for="nome">Nome: </label>
+        <input type="text" name="nome" id="nome" autocomplete="off">
+    </p>
+    <p>
+        <label for="salada">Salada</label>
+        <select name="name_salada" id="salada">
+            <option value="0" selected>Verde (folhas e palmito)</option>
+            <option value="1">Caprese</option>
+            <option value="2">Caesar</option>
+            <option value="3">Rúcula e pêras</option>
+            <option value="4">Salmão</option>
+        </select>
+    </p>
+    <p>
+        Molho:
+        <input type="radio" name="name_molho" id="molho1" value="0" checked />
+        <label for="molho1">Nenhum</label>
+
+        <input type="radio" name="name_molho" id="molho2" value="1"/>
+        <label for="molho2">Mostarda e Mel</label>
+
+        <input type="radio" name="name_molho" id="molho3" value="2"/>
+        <label for="molho3">Queijos</label>
+    </p>
+    <p>Complementos:
+        <input type="checkbox" name="name_pao" id="pao" checked>
+        <label for="pao">Pão francês</label>
+
+        <input type="checkbox" name="name_sobremesa" id="sobremesa">
+        <label for="sobremesa">sobremesa</label>
+
+    </p>
+</body>
+
+</html>
