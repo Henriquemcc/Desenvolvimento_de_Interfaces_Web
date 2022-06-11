@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+
+    <!-- Configurações da página -->
+    <title>Calculadora</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <!-- Boot Strap -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-0evHe/X+R7YkIZDRvuzKMRqM+OrBnVFBL6DOitfPri4tjfHxaWutUpFmBp4vmVor" crossorigin="anonymous">
+
+    <!-- Font Awesome -->
+    <script src="https://kit.fontawesome.com/ea7d815f8f.js" crossorigin="anonymous"></script>
+
+    <!-- CSS e JavaScript da calculadora: Inicio -->
+    <link rel="stylesheet" href="style.css">
+    <script src="script.js"></script>
+    <!-- CSS e JavaScript da calculadora: Fim -->
+</head>
+
+<body>
+
+    <!-- Área do Boot Strap: Inicio -->
+    <div class="container">
+
+        <!-- Título -->
+        <h1>Calculadora</h1>
+
+        <!-- Área da calculadora: Inicio -->
+        <div id="calculadora" class="card">
+
+            <!-- Área onde ficará o display: Inicio -->
+            <div class="card-header">
+                <p id="display" class="m-1">0</p>
+            </div>
+            <!-- Área onde ficará o display: Fim -->
+
+            <!-- Área onde ficarão os botões: Inicio -->
+            <div class="card-body">
+                <div class="row">
+
+                    <!-- Botão 7: Inicio -->
+                    <div class="col">
+                        <button id="bt-7" type="button" class="btn btn-light btn-block button-text">7</button></button>
+                    </div>
+                    <!-- Botão 7: Fim -->
+
+                    <!-- Botão 8: Inicio -->
+                    <div class="col">
+                        <button id="bt-8" type="button" class="btn btn-light btn-block button-text">8</button></button>
+                    </div>
+                    <!-- Botão 8: Fim -->
+
+                    <!-- Botão 9: Inicio -->
+                    <div class="col">
+                        <button id="bt-9" type="button" class="btn btn-light btn-block button-text">9</button></button>
+                    </div>
+                    <!-- Botão 9: Fim -->
+
+                    <!-- Botão dividir: Inicio -->
+                    <div class="col">
+                        <button id="bt-divide" type="button" class="btn btn-warning btn-block button-text"><i
+                                class="fa fa-divide"></i></button>
+                    </div>
+                    <!-- Botão dividir: Fim -->
+                </div>
+                <div class="row">
+
+                    <!-- Botão 4: Inicio -->
+                    <div class="col">
+                        <button id="bt-4" type="button" class="btn btn-light btn-block button-text">4</button></button>
+                    </div>
+                    <!-- Botão 4: Fim -->
+
+                    <!-- Botão 5: Inicio -->
+                    <div class="col">
+                        <button id="bt-5" type="button" class="btn btn-light btn-block button-text">5</button></button>
+                    </div>
+                    <!-- Botão 5: Fim -->
+
+                    <!-- Botão 6: Inicio -->
+                    <div class="col">
+                        <button id="bt-6" type="button" class="btn btn-light btn-block button-text">6</button></button>
+                    </div>
+                    <!-- Botão 6: Fim -->
+
+                    <!-- Botão multiplicar: Inicio -->
+                    <div class="col">
+                        <button id="bt-times" type="button" class="btn btn-warning btn-block button-text"><i
+                                class="fa fa-times"></i></button>
+
+                    </div>
+                    <!-- Botão multiplicar: Fim -->
+                </div>
+                <div class="row">
+
+                    <!-- Botão 1: Inicio -->
+                    <div class="col">
+                        <button id="bt-1" type="button" class="btn btn-light btn-block button-text">1</button></button>
+                    </div>
+                    <!-- Botão 1: Fim -->
+
+                    <!-- Botão 2: Inicio -->
+                    <div class="col">
+                        <button id="bt-2" type="button" class="btn btn-light btn-block button-text">2</button></button>
+                    </div>
+                    <!-- Botão 2: Fim -->
+
+                    <!-- Botão 3: Inicio -->
+                    <div class="col">
+                        <button id="bt-3" type="button" class="btn btn-light btn-block button-text">3</button></button>
+                    </div>
+                    <!-- Botão 3: Fim -->
+
+                    <!-- Botão subtrair: Inicio -->
+                    <div class="col">
+                        <button id="bt-minus" type="button" class="btn btn-warning btn-block button-text"><i
+                                class="fa fa-minus"></i></button>
+                    </div>
+                    <!-- Botão subtrair: Fim -->
+                </div>
+                <div class="row">
+
+                    <!-- Botão 0: Inicio -->
+                    <div class="col-6">
+                        <button id="bt-0" type="button" class="btn btn-light btn-block button-text">0</button>
+                    </div>
+                    <!-- Botão 0: Fim -->
+
+                    <!-- Botão vírgula: Inicio -->
+                    <div class="col">
+                        <button id="bt-comma" type="button" class="btn btn-light btn-block button-text">,</button>
+                    </div>
+                    <!-- Botão vírgula: Fim -->
+
+                    <!-- Botão somar: Inicio-->
+                    <div class="col">
+                        <button id="bt-plus" type="button" class="btn btn-warning btn-block button-text"><i
+                                class="fa fa-plus"></i></button>
+                    </div>
+                    <!-- Botão somar: Fim -->
+                </div>
+                <div class="row">
+
+                    <!-- Botão AC: Inicio -->
+                    <div class="col offset-6">
+                        <button id="bt-ac" type="button" class="btn btn-secondary button-text">AC</button>
+                    </div>
+                    <!-- Botão AC: Fim -->
+
+                    <!-- Botão igual: Inicio -->
+                    <div class="col">
+                        <button id="bt-equals" type="button" class="btn btn-warning btn-block button-text">
+                            <i class="fa fa-equals"></i>
+                        </button>
+                    </div>
+                    <!-- Botão igual: Fim -->
+                </div>
+
+            </div>
+            <!-- Área onde ficarão os botões: Fim -->
+
+        </div>
+        <!-- Área da calculadora: Fim -->
+
+    </div>
+    <!-- Área do Boot Strap: Fim -->
+
+
+    <!-- Boot Strap -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-pprn3073KE6tl6bjs2QrFaJGz5/SUsLqktiwsUTF55Jfv3qYSDhgCecCxMW52nD2"
+        crossorigin="anonymous"></script>
+</body>
+
+</html>
