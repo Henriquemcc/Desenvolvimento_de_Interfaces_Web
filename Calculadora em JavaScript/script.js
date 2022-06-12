@@ -10,7 +10,7 @@ function atualizarVisor() {
 }
 
 /**
- * Executa o tratamento, quando o um botão de um número é clicado.
+ * Função executada quando o um botão de um número é clicado.
  * @param {*} n Número pressionado.
  */
 function digito(n) {
@@ -21,6 +21,25 @@ function digito(n) {
     sValor += n;
   }
   atualizarVisor();
+}
+
+/**
+ * Função executada quando o botão de vírgula é clicado.
+ */
+function virgula() {
+
+  // Verificando se já não há virgula  
+  if (!sValor.includes(",")) {
+    
+    if (ehNovoNumero) {
+      sValor = "0,";
+      ehNovoNumero = false;
+    } else {
+      sValor += ",";
+    }
+
+    atualizarVisor();
+  }
 }
 
 onload = () => {
@@ -35,4 +54,7 @@ onload = () => {
   document.getElementById("bt-2").onclick = () => digito(2);
   document.getElementById("bt-3").onclick = () => digito(3);
   document.getElementById("bt-0").onclick = () => digito(0);
+
+  // Adicionando ação aos outros botões
+  document.getElementById("bt-comma").onclick = virgula;
 };
