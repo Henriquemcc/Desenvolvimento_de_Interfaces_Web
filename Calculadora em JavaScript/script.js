@@ -6,7 +6,13 @@ let ehNovoNumero = true;
  * Atualiza o display da calculadora.
  */
 function atualizarVisor() {
-  document.getElementById("display").innerText = sValor;
+  let [parteInteira, parteDecimal] = sValor.split(",");
+  let v = "";
+  for(let i = parteInteira.length - 1; i >= 0; i--) {
+    v = parteInteira[i] + v;
+  }
+  v = v + (parteDecimal ? ("," + parteDecimal) : "");
+  document.getElementById("display").innerText = v;
 }
 
 /**
@@ -27,10 +33,8 @@ function digito(n) {
  * Função executada quando o botão de vírgula é clicado.
  */
 function virgula() {
-
-  // Verificando se já não há virgula  
+  // Verificando se já não há virgula
   if (!sValor.includes(",")) {
-
     if (ehNovoNumero) {
       sValor = "0,";
       ehNovoNumero = false;
@@ -46,9 +50,9 @@ function virgula() {
  * Função executada quando o botão AC é clicado
  */
 function limpar() {
-    ehNovoNumero = true;
-    sValor = "0";
-    atualizarVisor();
+  ehNovoNumero = true;
+  sValor = "0";
+  atualizarVisor();
 }
 
 onload = () => {
