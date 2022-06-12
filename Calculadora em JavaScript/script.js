@@ -30,7 +30,7 @@ function virgula() {
 
   // Verificando se já não há virgula  
   if (!sValor.includes(",")) {
-    
+
     if (ehNovoNumero) {
       sValor = "0,";
       ehNovoNumero = false;
@@ -40,6 +40,15 @@ function virgula() {
 
     atualizarVisor();
   }
+}
+
+/**
+ * Função executada quando o botão AC é clicado
+ */
+function limpar() {
+    ehNovoNumero = true;
+    sValor = "0";
+    atualizarVisor();
 }
 
 onload = () => {
@@ -57,4 +66,5 @@ onload = () => {
 
   // Adicionando ação aos outros botões
   document.getElementById("bt-comma").onclick = virgula;
+  document.getElementById("bt-ac").onclick = limpar;
 };
