@@ -27,12 +27,13 @@ let operacaoPendente = null;
  */
 function atualizarVisor() {
   
-  if (sValor.length > 10) {
+  let [parteInteira, parteDecimal] = sValor.split(",");
+
+  if (parteInteira.length > 10) {
     document.getElementById("display").innerText = "Erro";
     return;
   }
 
-  let [parteInteira, parteDecimal] = sValor.split(",");
   let stringDisplay = "";
   let contador = 0;
   for (let i = parteInteira.length - 1; i >= 0; i--) {
@@ -42,7 +43,7 @@ function atualizarVisor() {
     }
     stringDisplay = parteInteira[i] + stringDisplay;
   }
-  stringDisplay = stringDisplay + (parteDecimal ? ("," + parteDecimal) : "");
+  stringDisplay = stringDisplay + (parteDecimal ? ("," + parteDecimal.substring(0, 10 - stringDisplay.length)) : "");
   document.getElementById("display").innerText = stringDisplay;
 }
 
