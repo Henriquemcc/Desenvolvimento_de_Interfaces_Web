@@ -8,7 +8,12 @@ let ehNovoNumero = true;
 function atualizarVisor() {
   let [parteInteira, parteDecimal] = sValor.split(",");
   let stringDisplay = "";
+  let contador = 0;
   for(let i = parteInteira.length - 1; i >= 0; i--) {
+    if (++contador > 3) {
+        stringDisplay = "." + stringDisplay;
+        contador = 1;
+    }
     stringDisplay = parteInteira[i] + stringDisplay;
   }
   stringDisplay = stringDisplay + (parteDecimal ? ("," + parteDecimal) : "");
