@@ -1,3 +1,7 @@
+#memoria {
+    max-width: 30rem;
+}
+
 #memoria img {
     margin-bottom: 20px;
     border: thin solid black;
