@@ -26,6 +26,12 @@ let operacaoPendente = null;
  * Atualiza o display da calculadora.
  */
 function atualizarVisor() {
+  
+  if (sValor.length > 10) {
+    document.getElementById("display").innerText = "Erro";
+    return;
+  }
+
   let [parteInteira, parteDecimal] = sValor.split(",");
   let stringDisplay = "";
   let contador = 0;
