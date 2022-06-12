@@ -7,12 +7,12 @@ let ehNovoNumero = true;
  */
 function atualizarVisor() {
   let [parteInteira, parteDecimal] = sValor.split(",");
-  let v = "";
+  let stringDisplay = "";
   for(let i = parteInteira.length - 1; i >= 0; i--) {
-    v = parteInteira[i] + v;
+    stringDisplay = parteInteira[i] + stringDisplay;
   }
-  v = v + (parteDecimal ? ("," + parteDecimal) : "");
-  document.getElementById("display").innerText = v;
+  stringDisplay = stringDisplay + (parteDecimal ? ("," + parteDecimal) : "");
+  document.getElementById("display").innerText = stringDisplay;
 }
 
 /**
