@@ -121,11 +121,12 @@ function tratarCliqueImagem(e) {
     if (valor == valorCartaVirada) {
       pontos++;
     } else {
+        const posicaoCartaVirada0 = posicaoCartaVirada;
       cliquesTravados = true;
       setTimeout(function () {
         e.target.src = fundo;
         e.target.onclick = tratarCliqueImagem;
-        let img = document.getElementById(`i${posicaoCartaVirada}`);
+        let img = document.getElementById(`i${posicaoCartaVirada0}`);
         img.src = fundo;
         img.onclick = tratarCliqueImagem;
         cliquesTravados = false;
