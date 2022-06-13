@@ -91,19 +91,29 @@ let fundo = "https://picsum.photos/80?grayscale";
  */
 let cartas = [1, 1, 2, 2, 3, 3, 4, 4, 5, 5, 6, 6, 7, 7, 8, 8];
 
+let cliquesTravados = false;
+
 /**
  * Processa o clique na imagem.
  */
 function tratarCliqueImagem(e) {
+
+    if (cliquesTravados) {
+        return;
+    }
+
     const posicao = +e.target.getAttribute("data-valor");
     const valor = cartas[posicao];
     e.target.src = getUrlImagensPicsumPhotos(idImagensFrenteCartas[valor - 1]);
     e.target.onclick = null;
 
+    cliquesTravados = true;
+
     setTimeout(function() {
         e.target.src = fundo;
         e.target.onclick = tratarCliqueImagem;
-    }, 1500);
+        cliquesTravados = false;
+    }, 3000);
 }
 
 /**
