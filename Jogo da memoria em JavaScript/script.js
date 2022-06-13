@@ -66,10 +66,15 @@ function getUrlImagensPicsumPhotos(id, size = 80) {
  * @returns Valor booleano indicando se a url é válida.
  */
 function urlIsValid(url, method = "GET") {
-  let httpRequest = new XMLHttpRequest();
-  httpRequest.open(method, url, false);
-  httpRequest.send();
-  return !(httpRequest.status <= 499 && httpRequest.status >= 400);
+  try {
+    let httpRequest = new XMLHttpRequest();
+    httpRequest.open(method, url, false);
+    httpRequest.send();
+    return !(httpRequest.status <= 499 && httpRequest.status >= 400);
+  }
+  catch {
+    return false;
+  }
 }
 
 /**
