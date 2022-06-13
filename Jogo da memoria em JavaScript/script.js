@@ -88,19 +88,50 @@ let idImagensFrenteCartas = [];
 // Selecionando id imagens de 'idImagensPicsumPhotos' para 'idImagensFrenteCartas'
 for (let i = 0; i < 8; i++) {
   // Movendo aleatoriamente todas as imagens do array 'imagensPicsumPhotos' para o array 'imagensFrenteCartas'
-  let imagem = Array_removeByIndex(
+  idImagensFrenteCartas.push(Array_removeByIndex(
     idImagensPicsumPhotos,
     Math.trunc(getRandomArbitrary(0, idImagensPicsumPhotos.length)),
-  );
+  ));
+}
 
-  // Adicionando ID somente se a Url for válida
-  if (urlIsValid(getUrlImagensPicsumPhotos(imagem))) {
-    idImagensFrenteCartas.push(imagem);
-  } // Pulando contador atual caso url da imagem seja inválida.
-  else {
-    i--;
+/**
+ * Classe de objeto que controla o timer do jogo.
+ */
+class Timer {
+  /**
+   * Constrói uma nova instância da classe timer.
+   * @param {String} element String a ser passada a 'document.querySelector'.
+   */
+  constructor(element) {
+    this.element = element;
+  }
+
+  /**
+   * Inicia a contagem de tempo.
+   */
+  start() {
+    this.time = 0;
+    this.control = setInterval(() => {
+      this.time++;
+      const minutes = Math.trunc(this.time / 60);
+      const seconds = this.time % 60;
+      document.querySelector(this.element).innerHTML = `${(minutes < 10) ? `0${minutes}` : minutes}:${(seconds < 10 ? `0${seconds}` : seconds)}`;
+    }, 1000);
+  }
+
+  /**
+   * Finaliza a contagem de tempo.
+   */
+  stop() {
+    clearInterval(this.control);
+    this.control = null;
   }
 }
+
+/**
+ * Objeto de controle do timer do jogo.
+ */
+let timerDoJogo = new Timer("#timer");
 
 /**
  * Url da imagem, de tamanho 80 do site picsum.photos, utilizada na parte de traz das cartas.
@@ -173,6 +204,7 @@ function tratarCliqueImagem(e) {
     valorCartaVirada = 0;
   }
   if (pontos == 8) {
+    timerDoJogo.stop();
     document.getElementById("btInicio").disabled = false;
     document.getElementById("timer").style.backgroundColor = "lightgreen";
   }
@@ -212,7 +244,7 @@ function iniciarJogo() {
   // Ajustando a interface
   document.getElementById("btInicio").disabled = true;
   document.getElementById("timer").style.backgroundColor = "orange";
-  
+  timerDoJogo.start();
 }
 
 onload = () => {
