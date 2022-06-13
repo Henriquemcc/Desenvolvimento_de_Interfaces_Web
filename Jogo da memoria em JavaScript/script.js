@@ -172,6 +172,9 @@ function tratarCliqueImagem(e) {
     posicaoCartaVirada = -1;
     valorCartaVirada = 0;
   }
+  if (pontos == 8) {
+    document.getElementById("btInicio").disabled = false;
+  }
 }
 
 /**
@@ -201,6 +204,9 @@ function iniciarJogo() {
       img.onclick = tratarCliqueImagem;
     },
   );
+
+  // Ajustando a interface
+  document.getElementById("btInicio").disabled = true;
 
   // Reinicia o estado do jogo
   re_iniciarVariaveis();
