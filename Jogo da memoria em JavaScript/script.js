@@ -65,11 +65,11 @@ function getUrlImagensPicsumPhotos(id, size = 80) {
  * @param {String} method Método HTTP.
  * @returns Valor booleano indicando se a url é válida.
  */
-function urlIsValid(url, method="GET") {
-    let httpRequest = new XMLHttpRequest();
-    httpRequest.open(method, url, false);
-    httpRequest.send();
-    return !(httpRequest.status <= 499 && httpRequest.status >= 400);
+function urlIsValid(url, method = "GET") {
+  let httpRequest = new XMLHttpRequest();
+  httpRequest.open(method, url, false);
+  httpRequest.send();
+  return !(httpRequest.status <= 499 && httpRequest.status >= 400);
 }
 
 /**
@@ -77,24 +77,26 @@ function urlIsValid(url, method="GET") {
  */
 let idImagensPicsumPhotos = [];
 for (let i = 0; i <= 1084; i++) {
-    idImagensPicsumPhotos.push(i);
+  idImagensPicsumPhotos.push(i);
 }
 
 /**
  * Lista de IDs das imagens de tamanho 80 do site picsum.photos, utilizadas na parte da frente das cartas do jogo da memória.
  */
 let idImagensFrenteCartas = [];
-for (let i = 0; i < 8; i++) {
 
+// Selecionando id imagens de 'idImagensPicsumPhotos' para 'idImagensFrenteCartas'
+for (let i = 0; i < 8; i++) {
   // Movendo aleatoriamente todas as imagens do array 'imagensPicsumPhotos' para o array 'imagensFrenteCartas'
-  let imagem = Array_removeByIndex(idImagensPicsumPhotos, Math.trunc(getRandomArbitrary(0, idImagensPicsumPhotos.length)));
+  let imagem = Array_removeByIndex(
+    idImagensPicsumPhotos,
+    Math.trunc(getRandomArbitrary(0, idImagensPicsumPhotos.length)),
+  );
 
   // Adicionando ID somente se a Url for válida
   if (urlIsValid(getUrlImagensPicsumPhotos(imagem))) {
     idImagensFrenteCartas.push(imagem);
-  }
-  
-  // Pulando imagem atual caso seja inválida.
+  } // Pulando contador atual caso url da imagem seja inválida.
   else {
     i--;
   }
@@ -120,17 +122,18 @@ let valorCartaVirada;
 let pontos;
 
 /**
- * (Re)Inicia as variáveis de controle do jogo.
+ * Inicia as variáveis de controle do jogo.
  */
-function re_iniciarVariaveis() {
-    cliquesTravados = false;
-    temCartaVirada = false;
-    posicaoCartaVirada = -1;
-    valorCartaVirada = 0;
-    pontos = 0;
+function iniciarVariaveis() {
+  cliquesTravados = false;
+  temCartaVirada = false;
+  posicaoCartaVirada = -1;
+  valorCartaVirada = 0;
+  pontos = 0;
 }
-re_iniciarVariaveis();
 
+// Inicializando as variáveis
+iniciarVariaveis();
 
 /**
  * Processa o clique na imagem.
@@ -154,7 +157,7 @@ function tratarCliqueImagem(e) {
     if (valor == valorCartaVirada) {
       pontos++;
     } else {
-        const posicaoCartaVirada0 = posicaoCartaVirada;
+      const posicaoCartaVirada0 = posicaoCartaVirada;
       cliquesTravados = true;
       setTimeout(function () {
         e.target.src = fundo;
@@ -164,11 +167,10 @@ function tratarCliqueImagem(e) {
         img.onclick = tratarCliqueImagem;
         cliquesTravados = false;
       }, 1500);
-
-      temCartaVirada = false;
-      posicaoCartaVirada = -1;
-      valorCartaVirada = 0;
     }
+    temCartaVirada = false;
+    posicaoCartaVirada = -1;
+    valorCartaVirada = 0;
   }
 }
 
@@ -179,9 +181,7 @@ function iniciarJogo() {
   // Embaralhar as cartas
   Array_sufle(cartas);
 
-  // Carrega as imagens de fundo
-  let elementosImagens = document.querySelectorAll("#memoria img");
-  elementosImagens.forEach(
+  document.querySelectorAll("#memoria img").forEach(
     (img, i) => {
       // Fazendo as cartas aparecerem
       /// Adicionando url da imagem
