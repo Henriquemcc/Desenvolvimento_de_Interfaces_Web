@@ -60,11 +60,24 @@ function getUrlImagensPicsumPhotos(id, size = 80) {
 }
 
 /**
+ * Verifica se uma url é valida.
+ * @param {String} url Url a ser verificada.
+ * @param {String} method Método HTTP.
+ * @returns Valor booleano indicando se a url é válida.
+ */
+function urlIsValid(url, method="GET") {
+    let httpRequest = new XMLHttpRequest();
+    httpRequest.open(method, url, false);
+    httpRequest.send();
+    return !(httpRequest.status <= 499 && httpRequest.status >= 400);
+}
+
+/**
  * Lista de IDs das imagens de tamanho 80 do site picsum.photos.
  */
 let idImagensPicsumPhotos = [];
 for (let i = 0; i <= 1084; i++) {
-  idImagensPicsumPhotos.push(i);
+    idImagensPicsumPhotos.push(i);
 }
 
 /**
@@ -73,12 +86,11 @@ for (let i = 0; i <= 1084; i++) {
 let idImagensFrenteCartas = [];
 for (let i = 0; i < 16; i++) {
   // Movendo aleatoriamente todas as imagens do array 'imagensPicsumPhotos' para o array 'imagensFrenteCartas'
-  idImagensFrenteCartas.push(
-    Array_removeByIndex(
-      idImagensPicsumPhotos,
-      Math.trunc(getRandomArbitrary(0, idImagensPicsumPhotos.length)),
-    ),
-  );
+  let imagem = Array_removeByIndex(idImagensPicsumPhotos, Math.trunc(getRandomArbitrary(0, idImagensPicsumPhotos.length)));
+
+  if (urlIsValid(getUrlImagensPicsumPhotos(imagem))) {
+    idImagensFrenteCartas.push(imagem);
+  }
 }
 
 /**
@@ -94,11 +106,24 @@ let cartas = [1, 1, 2, 2, 3, 3, 4, 4, 5, 5, 6, 6, 7, 7, 8, 8];
 /**
  * Variável de controle que impede que o usuário abra mais cartas.
  */
-let cliquesTravados = false;
-let temCartaVirada = false;
-let posicaoCartaVirada = -1;
-let valorCartaVirada = 0;
-let pontos = 0;
+let cliquesTravados;
+let temCartaVirada;
+let posicaoCartaVirada;
+let valorCartaVirada;
+let pontos;
+
+/**
+ * (Re)Inicia as variáveis de controle do jogo.
+ */
+function re_iniciarVariaveis() {
+    cliquesTravados = false;
+    temCartaVirada = false;
+    posicaoCartaVirada = -1;
+    valorCartaVirada = 0;
+    pontos = 0;
+}
+re_iniciarVariaveis();
+
 
 /**
  * Processa o clique na imagem.
@@ -174,11 +199,7 @@ function iniciarJogo() {
   );
 
   // Reinicia o estado do jogo
-  cliquesTravados = false;
-  temCartaVirada = false;
-  posicaoCartaVirada = -1;
-  valorCartaVirada = 0;
-  pontos = 0;
+  re_iniciarVariaveis();
 
   // Ajusta a interface
   document.getElementById("btInicio").disabled = true;
