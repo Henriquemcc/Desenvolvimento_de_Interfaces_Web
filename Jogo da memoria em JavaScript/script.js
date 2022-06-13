@@ -60,23 +60,6 @@ function getUrlImagensPicsumPhotos(id, size = 80) {
 }
 
 /**
- * Verifica se uma url é valida.
- * @param {String} url Url a ser verificada.
- * @param {String} method Método HTTP.
- * @returns Valor booleano indicando se a url é válida.
- */
-function urlIsValid(url, method = "GET") {
-  try {
-    let httpRequest = new XMLHttpRequest();
-    httpRequest.open(method, url, false);
-    httpRequest.send();
-    return !(httpRequest.status <= 499 && httpRequest.status >= 400);
-  } catch {
-    return false;
-  }
-}
-
-/**
  * Lista de IDs das imagens de tamanho 80 do site picsum.photos.
  */
 let idImagensPicsumPhotos = [
