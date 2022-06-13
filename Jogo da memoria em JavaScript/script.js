@@ -40,13 +40,13 @@ function Array_removeByIndex(array, index) {
  * Embaralha um array.
  * @param {*} array Array a ser embaralhado.
  */
- function Array_sufle(array) {
-    for (let i = 0; i < array.length; i++) {
-        let position = Math.trunc(getRandomArbitrary(0, array.length));
-        let temporary = array[position];
-        array[position] = array[i];
-        array[i] = temporary;
-    }
+function Array_sufle(array) {
+  for (let i = 0; i < array.length; i++) {
+    let position = Math.trunc(getRandomArbitrary(0, array.length));
+    let temporary = array[position];
+    array[position] = array[i];
+    array[i] = temporary;
+  }
 }
 
 /**
@@ -55,8 +55,8 @@ function Array_removeByIndex(array, index) {
  * @param {Number} size Tamanho da imagem.
  * @returns Url da imagem do site picsum.
  */
-function getUrlImagensPicsumPhotos(id, size=80) {
-    return `https://picsum.photos/id/${i}/${size}`;
+function getUrlImagensPicsumPhotos(id, size = 80) {
+  return `https://picsum.photos/id/${id}/${size}`;
 }
 
 /**
@@ -73,7 +73,12 @@ for (let i = 0; i <= 1084; i++) {
 let idImagensFrenteCartas = [];
 for (let i = 0; i < 16; i++) {
   // Movendo aleatoriamente todas as imagens do array 'imagensPicsumPhotos' para o array 'imagensFrenteCartas'
-  idImagensFrenteCartas.push(Array_removeByIndex(idImagensPicsumPhotos, Math.trunc(getRandomArbitrary(0, idImagensPicsumPhotos.length))));
+  idImagensFrenteCartas.push(
+    Array_removeByIndex(
+      idImagensPicsumPhotos,
+      Math.trunc(getRandomArbitrary(0, idImagensPicsumPhotos.length)),
+    ),
+  );
 }
 
 /**
@@ -84,28 +89,48 @@ let fundo = "https://picsum.photos/80?grayscale";
 let cartas = [1, 1, 2, 2, 3, 3, 4, 4, 5, 5, 6, 6, 7, 7, 8, 8];
 
 /**
+ * Processa o clique na imagem.
+ */
+function tratarCliqueImagem(e) {
+    const posicao = +e.target.getAttribute("data-valor");
+    e.target.src = getUrlImagensPicsumPhotos(idImagensFrenteCartas[posicao]);
+}
+
+/**
  * Inicia o jogo.
  */
 function iniciarJogo() {
-
-    // Embaralhar as cartas
-    Array_sufle(cartas);
-
-}
-
-
-onload = () => {
+  // Embaralhar as cartas
+  Array_sufle(cartas);
 
   // Carrega as imagens de fundo
   let elementosImagens = document.querySelectorAll("#memoria img");
   elementosImagens.forEach(
     (img, i) => {
+
+      // Fazendo as cartas aparecerem
+      /// Adicionando url da imagem
       img.src = fundo;
+
+      /// Definindo o estilo das imagens das cartas
+      img.style.marginBottom = "20px";
+      img.style.border = "thin solid black";
+      img.style.width = "80px";
+      img.style.height = "80px";
+      img.style.borderRadius = "10px";
+
+      // Adicionando atributo data-valor a imagem.
       img.setAttribute("data-valor", i);
-      img.style.opacity = 0.3;
+
+      // Definindo a ação que quando a carta for clicada
+      img.onclick = tratarCliqueImagem;
     },
   );
 
+  // Associar evento ás imagens
+}
+
+onload = () => {
   // Cria o evento do botão de início
   document.getElementById("btInicio").onclick = iniciarJogo;
 };
