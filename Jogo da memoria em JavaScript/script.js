@@ -170,10 +170,6 @@ function tratarCliqueImagem(e) {
       valorCartaVirada = 0;
     }
   }
-
-  if (pontos == 8) {
-    document.getElementById("btInicio").disabled = false;
-  }
 }
 
 /**
@@ -208,9 +204,6 @@ function iniciarJogo() {
 
   // Reinicia o estado do jogo
   re_iniciarVariaveis();
-
-  // Ajusta a interface
-  document.getElementById("btInicio").disabled = true;
 }
 
 onload = () => {
