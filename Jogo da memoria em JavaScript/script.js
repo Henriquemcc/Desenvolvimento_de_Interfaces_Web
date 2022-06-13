@@ -86,14 +86,19 @@ for (let i = 0; i < 16; i++) {
  */
 let fundo = "https://picsum.photos/80?grayscale";
 
-let cartas = [1, 1, 2, 2, 3, 3, 4, 4, 5, 5, 6, 6, 7, 7, 8, 8];
+let cartas = [];
+for(let  i = 0; i < 8; i++) {
+    cartas.push(idImagensFrenteCartas[i])
+    cartas.push(idImagensFrenteCartas[i]);
+}
+
 
 /**
  * Processa o clique na imagem.
  */
 function tratarCliqueImagem(e) {
     const posicao = +e.target.getAttribute("data-valor");
-    e.target.src = getUrlImagensPicsumPhotos(idImagensFrenteCartas[posicao]);
+    e.target.src = getUrlImagensPicsumPhotos(cartas[posicao]);
 }
 
 /**
