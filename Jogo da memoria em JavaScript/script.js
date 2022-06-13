@@ -99,6 +99,11 @@ function tratarCliqueImagem(e) {
     const valor = cartas[posicao];
     e.target.src = getUrlImagensPicsumPhotos(idImagensFrenteCartas[valor - 1]);
     e.target.onclick = null;
+
+    setTimeout(function() {
+        e.target.src = fundo;
+        e.target.onclick = tratarCliqueImagem;
+    }, 1500);
 }
 
 /**
