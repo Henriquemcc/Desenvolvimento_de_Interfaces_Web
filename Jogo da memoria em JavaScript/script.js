@@ -91,29 +91,51 @@ let fundo = "https://picsum.photos/80?grayscale";
  */
 let cartas = [1, 1, 2, 2, 3, 3, 4, 4, 5, 5, 6, 6, 7, 7, 8, 8];
 
+/**
+ * Variável de controle que impede que o usuário abra mais cartas.
+ */
 let cliquesTravados = false;
+let temCartaVirada = false;
+let posicaoCartaVirada = -1;
+let valorCartaVirada = 0;
+let pontos = 0;
 
 /**
  * Processa o clique na imagem.
  */
 function tratarCliqueImagem(e) {
+  if (cliquesTravados) {
+    return;
+  }
 
-    if (cliquesTravados) {
-        return;
-    }
+  const posicao = +e.target.getAttribute("data-valor");
+  const valor = cartas[posicao];
+  e.target.src = getUrlImagensPicsumPhotos(idImagensFrenteCartas[valor - 1]);
+  e.target.onclick = null;
 
-    const posicao = +e.target.getAttribute("data-valor");
-    const valor = cartas[posicao];
-    e.target.src = getUrlImagensPicsumPhotos(idImagensFrenteCartas[valor - 1]);
-    e.target.onclick = null;
-
-    cliquesTravados = true;
-
-    setTimeout(function() {
+  if (!temCartaVirada) {
+    temCartaVirada = true;
+    posicaoCartaVirada = posicao;
+    valorCartaVirada = valor;
+  } else {
+    if (valor == valorCartaVirada) {
+      pontos++;
+    } else {
+      cliquesTravados = true;
+      setTimeout(function () {
         e.target.src = fundo;
         e.target.onclick = tratarCliqueImagem;
+        let img = document.getElementById(`i${posicaoCartaVirada}`);
+        img.src = fundo;
+        img.onclick = tratarCliqueImagem;
         cliquesTravados = false;
-    }, 3000);
+      }, 3000);
+    }
+  }
+
+  if (pontos == 8) {
+    document.getElementById("btInicio").disabled = false;
+  }
 }
 
 /**
@@ -127,7 +149,6 @@ function iniciarJogo() {
   let elementosImagens = document.querySelectorAll("#memoria img");
   elementosImagens.forEach(
     (img, i) => {
-
       // Fazendo as cartas aparecerem
       /// Adicionando url da imagem
       img.src = fundo;
@@ -147,7 +168,15 @@ function iniciarJogo() {
     },
   );
 
-  // Associar evento ás imagens
+  // Reinicia o estado do jogo
+  cliquesTravados = false;
+  temCartaVirada = false;
+  posicaoCartaVirada = -1;
+  valorCartaVirada = 0;
+  pontos = 0;
+
+  // Ajusta a interface
+  document.getElementById("btInicio").disabled = true;
 }
 
 onload = () => {
