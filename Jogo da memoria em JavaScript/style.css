@@ -2,6 +2,15 @@
     max-width: 30rem;
 }
 
+#memoria #timer {
+    font-family: Helvetica, Arial, sans-serif;
+    font-size: 36pt;
+    font-weight: bold;
+    text-align: center;
+    background-color: lightgrey;
+    border-radius: 10px;
+}
+
 #memoria #rodape {
     text-align: center;
 }
