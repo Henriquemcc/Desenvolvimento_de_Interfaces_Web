@@ -84,12 +84,19 @@ for (let i = 0; i <= 1084; i++) {
  * Lista de IDs das imagens de tamanho 80 do site picsum.photos, utilizadas na parte da frente das cartas do jogo da memória.
  */
 let idImagensFrenteCartas = [];
-for (let i = 0; i < 16; i++) {
+for (let i = 0; i < 8; i++) {
+
   // Movendo aleatoriamente todas as imagens do array 'imagensPicsumPhotos' para o array 'imagensFrenteCartas'
   let imagem = Array_removeByIndex(idImagensPicsumPhotos, Math.trunc(getRandomArbitrary(0, idImagensPicsumPhotos.length)));
 
+  // Adicionando ID somente se a Url for válida
   if (urlIsValid(getUrlImagensPicsumPhotos(imagem))) {
     idImagensFrenteCartas.push(imagem);
+  }
+  
+  // Pulando imagem atual caso seja inválida.
+  else {
+    i--;
   }
 }
 
@@ -127,6 +134,7 @@ re_iniciarVariaveis();
 
 /**
  * Processa o clique na imagem.
+ * @param {*} e Evento do clique.
  */
 function tratarCliqueImagem(e) {
   if (cliquesTravados) {
