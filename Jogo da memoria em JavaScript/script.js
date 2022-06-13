@@ -174,6 +174,7 @@ function tratarCliqueImagem(e) {
   }
   if (pontos == 8) {
     document.getElementById("btInicio").disabled = false;
+    document.getElementById("timer").style.backgroundColor = "lightgreen";
   }
 }
 
@@ -205,11 +206,13 @@ function iniciarJogo() {
     },
   );
 
+  // Reinicia o estado do jogo
+  iniciarVariaveis();
+
   // Ajustando a interface
   document.getElementById("btInicio").disabled = true;
-
-  // Reinicia o estado do jogo
-  re_iniciarVariaveis();
+  document.getElementById("timer").style.backgroundColor = "orange";
+  
 }
 
 onload = () => {
