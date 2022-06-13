@@ -130,6 +130,10 @@ function tratarCliqueImagem(e) {
         img.onclick = tratarCliqueImagem;
         cliquesTravados = false;
       }, 3000);
+
+      temCartaVirada = false;
+      posicaoCartaVirada = -1;
+      valorCartaVirada = 0;
     }
   }
 
