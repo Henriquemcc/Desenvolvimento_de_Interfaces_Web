@@ -130,7 +130,7 @@ function tratarCliqueImagem(e) {
         img.src = fundo;
         img.onclick = tratarCliqueImagem;
         cliquesTravados = false;
-      }, 3000);
+      }, 1500);
 
       temCartaVirada = false;
       posicaoCartaVirada = -1;
