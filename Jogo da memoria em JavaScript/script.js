@@ -88,10 +88,18 @@ let idImagensFrenteCartas = [];
 // Selecionando id imagens de 'idImagensPicsumPhotos' para 'idImagensFrenteCartas'
 for (let i = 0; i < 8; i++) {
   // Movendo aleatoriamente todas as imagens do array 'imagensPicsumPhotos' para o array 'imagensFrenteCartas'
-  idImagensFrenteCartas.push(Array_removeByIndex(
+  let imagem = Array_removeByIndex(
     idImagensPicsumPhotos,
     Math.trunc(getRandomArbitrary(0, idImagensPicsumPhotos.length)),
-  ));
+  );
+
+  // Adicionando ID somente se a Url for válida
+  if (urlIsValid(getUrlImagensPicsumPhotos(imagem))) {
+    idImagensFrenteCartas.push(imagem);
+  } // Pulando contador atual caso url da imagem seja inválida.
+  else {
+    i--;
+  }
 }
 
 /**
