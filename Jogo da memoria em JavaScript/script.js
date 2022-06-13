@@ -37,6 +37,19 @@ function Array_removeByIndex(array, index) {
 }
 
 /**
+ * Embaralha um array.
+ * @param {*} array Array a ser embaralhado.
+ */
+ function Array_sufle(array) {
+    for (let i = 0; i < array.length; i++) {
+        let position = Math.trunc(getRandomArbitrary(0, array.length));
+        let temporary = array[position];
+        array[position] = array[i];
+        array[i] = temporary;
+    }
+}
+
+/**
  * Obtém a url de uma imagem do site picsum.photos a partir de seu id e tamanho.
  * @param {Number} id ID da imagem.
  * @param {Number} size Tamanho da imagem.
@@ -60,7 +73,7 @@ for (let i = 0; i <= 1084; i++) {
 let idImagensFrenteCartas = [];
 for (let i = 0; i < 16; i++) {
   // Movendo aleatoriamente todas as imagens do array 'imagensPicsumPhotos' para o array 'imagensFrenteCartas'
-  idImagensFrenteCartas.push(Array_removeByIndex(idImagensPicsumPhotos, Math.floor(getRandomArbitrary(0, idImagensPicsumPhotos.length))));
+  idImagensFrenteCartas.push(Array_removeByIndex(idImagensPicsumPhotos, Math.trunc(getRandomArbitrary(0, idImagensPicsumPhotos.length))));
 }
 
 /**
@@ -68,8 +81,22 @@ for (let i = 0; i < 16; i++) {
  */
 let fundo = "https://picsum.photos/80?grayscale";
 
-// Adicionando parte de traz das cartas
+let cartas = [1, 1, 2, 2, 3, 3, 4, 4, 5, 5, 6, 6, 7, 7, 8, 8];
+
+/**
+ * Inicia o jogo.
+ */
+function iniciarJogo() {
+
+    // Embaralhar as cartas
+    Array_sufle(cartas);
+
+}
+
+
 onload = () => {
+
+  // Carrega as imagens de fundo
   let elementosImagens = document.querySelectorAll("#memoria img");
   elementosImagens.forEach(
     (img, i) => {
@@ -78,4 +105,7 @@ onload = () => {
       img.style.opacity = 0.3;
     },
   );
+
+  // Cria o evento do botão de início
+  document.getElementById("btInicio").onclick = iniciarJogo;
 };
